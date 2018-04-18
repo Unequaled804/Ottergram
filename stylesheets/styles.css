@@ -31,6 +31,8 @@ a {
 
 .main-content {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-text {
@@ -70,8 +72,10 @@ a {
 }
 
 .thumbnail-list {
+  flex: 0 1 auto;
   list-style: none;
   padding: 0;
+
   white-space: nowrap;
   overflow-x: auto;
 }
