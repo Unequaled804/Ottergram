@@ -1,12 +1,31 @@
 var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]'; //常量用大写
-var DETAIL_TITLE_SELECTOR = '[data-image-role="title]';
+var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
 
-function setDetails() {
+function setDetails(imageUrl, titleText) {
   'use strict';
   var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-  detailImage.setAttribute("src", "img/otter3.jpg");
+  detailImage.setAttribute("src", imageUrl);
 
   var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
-  detailTitle.textContent = "You Should Be Dancing";
+  detailTitle.textContent = titleText;
 }
+
+function imageFromThumb(thumbnail) {
+  return thumbnail.getAttribute("data-image-url");
+}
+
+function titleFromThumb(thumbnail) {
+  return thumbnail.getAttribute("data-image-title");
+}
+
+function setDetailsFromThumb(thumbnail) {
+  setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
+}
+
+var firstThumbnail = document.querySelector(THUMBNAIL_LINK_SELECTOR);
+firstThumbnail.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log("You Clicked");
+    console.log(event);
+});
